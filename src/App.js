@@ -2,8 +2,10 @@ import "./App.css";
 import Navbar from "./components/navbar/navbar.component";
 import Homepage from "./Pages/homepage/homepage.component";
 
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, Router } from "react-router-dom";
 import ShopPage from "./Pages/shoppage/shop.component";
+import Footer from "./components/footer/footer.component";
+import ShopCategory from "./Pages/shopCategoryPage/shop-category.component";
 
 function App() {
   return (
@@ -16,7 +18,11 @@ function App() {
         <Route exact path="/shop">
           <ShopPage />
         </Route>
+        <Route exact path="/shop/:category">
+          <ShopCategory />
+        </Route>
       </Switch>
+      <Footer />
     </div>
   );
 }

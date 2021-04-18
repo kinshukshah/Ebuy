@@ -2,7 +2,6 @@ import React from "react";
 import "./homepage.styles.css";
 import Testimonial from "../../components/testimonial/testimonial.component";
 import Brands from "../../components/brands/brands.component";
-import Footer from "../../components/footer/footer.component";
 import BannerHeader from "../../components/banner-header/banner-header.component";
 import BannerOffer from "../../components/banner-offer/banner-offer.component";
 import FeaturedProducts from "../../components/featured-products/featured.products.component";
@@ -24,7 +23,6 @@ const Homepage = () => {
       <BannerOffer />
       <Testimonial />
       <Brands />
-      <Footer />
     </>
   );
 };

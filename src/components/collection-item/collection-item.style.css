@@ -1,0 +1,26 @@
+.collection-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.collection-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 10px;
+}
+.collection-header button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #ff523b;
+  color: #fff;
+}
+.collection-header button:hover {
+  background-color: #fff;
+  color: #ff523b;
+  border: 1px solid #ff523b;
+}
+.collection {
+  margin: 25px 0;
+}
