@@ -4,7 +4,11 @@
   margin-bottom: 50px;
   padding: 10px;
   transition: transform 0.5s;
-  height: 330px;
+  height: 350px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .col-4:hover {
   transform: translateY(-5px);
@@ -22,4 +26,21 @@
 }
 .rating i {
   color: #ff523b;
+}
+.addtocart {
+  position: absolute;
+  bottom: 60px;
+  /* padding: 10px 50px; */
+  width: 85%;
+  height: 35px;
+  margin: auto;
+  opacity: 0.5;
+  border: none;
+}
+.addtocart:hover {
+  opacity: 0.85;
+}
+.menu-footer {
+  align-self: flex-start;
+  height: 5%;
 }
