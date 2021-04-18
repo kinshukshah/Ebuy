@@ -4,16 +4,19 @@ import "./collection-item.style.css";
 import { Link } from "react-router-dom";
 
 const CollectionItem = ({ items, routeName, title }) => {
+  let spliceValue = routeName ? 4 : items.length;
   return (
     <div className="collection">
       <div className="collection-header">
         <h2>{title}</h2>
-        <Link to={`/shop/${routeName}`}>
-          <button>View All</button>
-        </Link>
+        {routeName ? (
+          <Link to={`/shop/${routeName}`}>
+            <button>View All</button>
+          </Link>
+        ) : null}
       </div>
       <div className="collection-row">
-        {items.slice(0, 4).map((ele) => (
+        {items.slice(0, spliceValue).map((ele) => (
           <MenuItem key={ele.id} {...ele} />
         ))}
       </div>
