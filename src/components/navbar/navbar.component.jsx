@@ -1,7 +1,8 @@
 import React from "react";
 import "./navbar.styles.css";
 import Logo from "../../assets/logo.png";
-import CartImage from "../../assets/cart.png";
+import CartIcon from "../cart-icon/cart-icon.component";
+
 const Navbar = () => {
   return (
     <div className="navbar container">
@@ -27,9 +28,7 @@ const Navbar = () => {
           </li>
         </ul>
       </nav>
-      <div className="cart">
-        <img src={CartImage} alt="Cart"></img>
-      </div>
+      <CartIcon />
     </div>
   );
 };
