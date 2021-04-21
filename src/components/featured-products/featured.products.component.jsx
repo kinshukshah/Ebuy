@@ -60,7 +60,7 @@ const FeaturedProducts = () => {
       <h2 className="feature-title">Featured Products</h2>
       <div className="featuredrow">
         {products.map((item) => (
-          <MenuItem {...item} />
+          <MenuItem element={item} />
         ))}
       </div>
     </>

@@ -17,7 +17,7 @@ const CollectionItem = ({ items, routeName, title }) => {
       </div>
       <div className="collection-row">
         {items.slice(0, spliceValue).map((ele) => (
-          <MenuItem key={ele.id} {...ele} />
+          <MenuItem key={ele.id} element={ele} {...ele} />
         ))}
       </div>
     </div>

@@ -2,7 +2,8 @@ import React from "react";
 import "./menu-item.styles.css";
 import ProdImage5 from "../../assets/product-5.jpg";
 import { Link } from "react-router-dom";
-const MenuItem = ({ id, name, imageUrl, price }) => {
+const MenuItem = ({ element }) => {
+  const { id, name, imageUrl, price } = element;
   return (
     <div className="col-4">
       <img src={imageUrl} alt=""></img>
@@ -17,7 +18,9 @@ const MenuItem = ({ id, name, imageUrl, price }) => {
         </div>
         <p>${price}</p>
       </div>
-      <button className="addtocart">Add to Cart</button>
+      <button className="addtocart" onClick={() => console.log(element)}>
+        Add to Cart
+      </button>
     </div>
   );
 };

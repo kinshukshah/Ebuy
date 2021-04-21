@@ -36,7 +36,7 @@ const LatestProduct = () => {
       <h2 className="feature-title">Latest Products</h2>
       <div className="featuredrow">
         {latestproducts.map((item) => (
-          <MenuItem key={item.id} {...item} />
+          <MenuItem key={item.id} element={item} />
         ))}
       </div>
     </>
