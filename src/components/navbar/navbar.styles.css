@@ -18,3 +18,8 @@ a {
 .logo img {
   width: 150px;
 }
+.logo h3 {
+  color: tomato;
+  font-size: 1.5rem;
+  font-family: "Dela Gothic One";
+}

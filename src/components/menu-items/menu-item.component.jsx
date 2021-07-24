@@ -11,6 +11,7 @@ const MenuItem = ({ element }) => {
 
   const AddToCart = (element) => {
     let cartArr = AddToCartUtils(element, cartContext.cartItems);
+    console.log(cartContext);
     setCartContext({ ...cartContext, cartItems: cartArr });
   };
   return (

@@ -1,0 +1,14 @@
+.signup-box {
+  margin: 30px auto;
+  width: 25rem;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.form-box {
+  display: flex;
+  flex-direction: column;
+}
