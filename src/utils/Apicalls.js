@@ -38,3 +38,47 @@ export const signup = async (name, email, password) => {
     alert("Sign up error");
   }
 };
+
+export const getProducts = async (setProducts) => {
+  try {
+    let { data } = await axios.get(`${BASE_API_URL}/products/getProducts`);
+    data.success && setProducts(data.products);
+    console.log(data);
+  } catch (error) {
+    alert("Could not fetch products");
+  }
+};
+
+export const getUserCartDetails = async (dispatch) => {
+  let userId = localStorage?.getItem("currentUser")
+    ? JSON.parse(localStorage?.getItem("currentUser")).user._id
+    : null;
+  try {
+    if (userId) {
+      let { data } = await axios.get(`${BASE_API_URL}/cart/${userId}`);
+      data.success &&
+        dispatch({
+          type: "INITIALIZE_CART",
+          payload: { cartItems: data.cartList.cartItems },
+        });
+      console.log(data.cartList.cartItems);
+    }
+  } catch (error) {
+    alert("Could not fetch user cart list");
+  }
+};
+
+export const updateCart = async (dispatch, productId, userId, action) => {
+  try {
+    let { data } = await axios.post(
+      `${BASE_API_URL}/cart/${userId}/${productId}?action=${action}`
+    );
+    data.success &&
+      dispatch({
+        type: "ADD_TO_CART",
+        payload: { cartItems: data.cart.cartItems },
+      });
+  } catch (error) {
+    alert("Could not update user cart list");
+  }
+};

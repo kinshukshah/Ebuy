@@ -11,3 +11,8 @@ export const AddToCartUtils = (element, CartContext) => {
 export const GetTotalItemUtils = (cartItems) => {
   return cartItems.reduce((a, b) => a + b.quantity, 0);
 };
+
+export const GetItemsByTags = (tag, products) => {
+  const { name, value } = tag;
+  return products.filter((item) => item[name] === value);
+};

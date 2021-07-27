@@ -5,14 +5,23 @@ import ProdImage5 from "../../assets/product-5.jpg";
 import { Link } from "react-router-dom";
 import { AddToCartUtils } from "../Utils/functions.utils";
 import { CartContext } from "../Context/Cart.Context";
+import { useAuth } from "../../context/AuthContext";
+import { useUserState } from "../../context/StateContext";
+import { updateCart } from "../../utils/Apicalls";
+import { useLoading } from "../../hooks/useLoading";
 const MenuItem = ({ element }) => {
-  const [cartContext, setCartContext] = useContext(CartContext);
-  const { id, name, imageUrl, price } = element;
-
-  const AddToCart = (element) => {
-    let cartArr = AddToCartUtils(element, cartContext.cartItems);
-    console.log(cartContext);
-    setCartContext({ ...cartContext, cartItems: cartArr });
+  const { _id, name, imageUrl, price } = element;
+  const {
+    user: {
+      user: { _id: userId },
+    },
+  } = useAuth();
+  const { userState, userStatedispatch } = useUserState();
+  const [loading, stopLoading, startLoading] = useLoading();
+  const AddToCart = async () => {
+    startLoading();
+    await updateCart(userStatedispatch, element._id, userId, "increase");
+    stopLoading();
   };
   return (
     <div className="col-4">
@@ -28,8 +37,12 @@ const MenuItem = ({ element }) => {
         </div>
         <p>${price}</p>
       </div>
-      <button className="addtocart" onClick={() => AddToCart(element)}>
-        Add to Cart
+      <button
+        className="addtocart"
+        disabled={loading ? true : false}
+        onClick={() => AddToCart()}
+      >
+        {loading ? "Adding..." : "Add to cart"}
       </button>
     </div>
   );

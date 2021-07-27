@@ -1,34 +1,32 @@
 import React from "react";
 import "./navbar.styles.css";
-import Logo from "../../assets/logo.png";
 import CartIcon from "../cart-icon/cart-icon.component";
 import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <div className="navbar container">
       <div className="logo">
-        {/* <img src={Logo} alt="SHOPIFY"></img> */}
-        <h3>SHOPIFY</h3>
+        <Link to="/">
+          <h3>Ebuy</h3>
+        </Link>
       </div>
       <nav>
         <ul>
           <li>
-            <a href="#">Home</a>
+            <Link to="/products">Products</Link>
           </li>
           <li>
-            <a href="#">Products</a>
+            <Link to="/checkout">Checkout </Link>
           </li>
           <li>
-            <a href="#">About</a>
+            <Link to="/account">Account</Link>
           </li>
           <li>
-            <a href="#">Contact</a>
+            <Link to="/shop">Categories</Link>
           </li>
           <li>
-            <a href="#">Account</a>
+            <Link to="/login">Login</Link>
           </li>
-          <Link to="/checkout">Checkout </Link>
-          <Link to="/login">Login</Link>
         </ul>
       </nav>
       <CartIcon />
