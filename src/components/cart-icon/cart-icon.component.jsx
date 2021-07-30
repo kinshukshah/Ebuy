@@ -1,22 +1,27 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import "./cart-icon.style.css";
 import CartImage from "../../assets/cart.png";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import { useUserState } from "../../context/StateContext";
 const CartIcon = () => {
-  // const [cartContext, setCartContext] = useContext(CartContext);
   const {
-    userState: { itemsInCart: CartItems },
+    userState: { itemsInCart: CartItems, hidden },
+    userStatedispatch,
   } = useUserState();
-  const toggleCartDropdown = () => {
-    // setCartContext({ ...cartContext, hidden: !cartContext.hidden });
-  };
   let cartCount = CartItems.length;
   return (
-    <div className="cart" onClick={toggleCartDropdown}>
+    <div
+      className="cart"
+      onMouseEnter={() =>
+        userStatedispatch({ type: "TOGGLE_CART_DROPDOWN", payload: false })
+      }
+      onMouseLeave={() =>
+        userStatedispatch({ type: "TOGGLE_CART_DROPDOWN", payload: true })
+      }
+    >
       <img src={CartImage} alt="Cart"></img>
       <span className="item-count">{cartCount}</span>
-      {/* {cartContext.hidden ? null : <CartDropdown />} */}
+      {hidden ? null : <CartDropdown />}
     </div>
   );
 };

@@ -17,6 +17,7 @@ import { useProducts } from "./context/ProductContext";
 import { getProducts, getUserCartDetails } from "./utils/Apicalls";
 import Products from "./Pages/ProductsPage/products.component";
 import { useUserState } from "./context/StateContext";
+import PageNotFound from "./Pages/PageNotFound/PageNotFound.component";
 function App() {
   const { setProducts } = useProducts();
   const {
@@ -54,6 +55,7 @@ function App() {
         <Route exact path="/signup" element={<SignUp />} />
         <Route exact path="/products" element={<Products />} />
         <PrivateRoute path="/checkout" element={<CheckoutPage />} />
+        <Route exact path="/*" element={<PageNotFound />} />
       </Routes>
       <Footer />
       {loading}

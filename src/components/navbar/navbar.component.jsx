@@ -4,7 +4,7 @@ import CartIcon from "../cart-icon/cart-icon.component";
 import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
-    <div className="navbar container">
+    <div className="navbar">
       <div className="logo">
         <Link to="/">
           <h3>Ebuy</h3>

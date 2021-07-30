@@ -1,0 +1,16 @@
+.pagenotfound {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 3rem 2rem;
+}
+.pagenotfound-image {
+  width: 40%;
+}
+.pagenotfound-image img {
+  width: 100%;
+}
+.pagenotfound-content {
+  width: 50%;
+}

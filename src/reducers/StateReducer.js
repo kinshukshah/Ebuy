@@ -1,5 +1,6 @@
 export const INITIAL_STATE = {
   itemsInCart: [],
+  hidden: true,
 };
 
 export const StateReducer = (state, action) => {
@@ -13,6 +14,11 @@ export const StateReducer = (state, action) => {
       return {
         ...state,
         itemsInCart: [...action.payload.cartItems],
+      };
+    case "TOGGLE_CART_DROPDOWN":
+      return {
+        ...state,
+        hidden: action.payload,
       };
 
     default:

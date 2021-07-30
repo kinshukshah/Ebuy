@@ -1,17 +1,10 @@
 import React from "react";
 import "./cart-item.styles.css";
-const CartItem = ({ image, name, quantity, price }) => {
+const CartItem = ({ product: { name, price }, quantity }) => {
   return (
     <div className="cart-item">
-      <div className="cart-item-img">
-        <img src={image} alt="item"></img>
-      </div>
-      <div className="item-details">
-        <span className="name">{name}</span>
-        <span className="price">
-          {quantity} X ${price}
-        </span>
-      </div>
+      <div className="item-name">{name}</div>
+      <div className="item-quantity">Qty: {quantity}</div>
     </div>
   );
 };
