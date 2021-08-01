@@ -1,0 +1,19 @@
+.checkout {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4rem;
+}
+.checkout-items {
+  width: 80%;
+}
+
+.checkout-summary {
+  width: 20%;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  padding: 12px 20px 12px 12px;
+  width: 500px;
+  height: fit-content;
+  margin: 1rem;
+  background-color: white;
+  border-radius: 5px;
+}

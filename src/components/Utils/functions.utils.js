@@ -16,3 +16,15 @@ export const GetItemsByTags = (tag, products) => {
   const { name, value } = tag;
   return products.filter((item) => item[name] === value);
 };
+
+export const GetTotalPrice = (CartItems) => {
+  if (CartItems.length > 0) {
+    return CartItems.reduce(
+      (accumulator, currentValue) =>
+        accumulator + currentValue.quantity * currentValue.productId.price,
+      0
+    );
+  } else {
+    return 0;
+  }
+};

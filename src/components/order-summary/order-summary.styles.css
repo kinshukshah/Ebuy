@@ -1,0 +1,14 @@
+.list-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  text-align: center;
+  padding: 1rem 0;
+}
+.summary-header {
+  font-weight: bold;
+}
+.total-amt {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5rem 0.5rem;
+}

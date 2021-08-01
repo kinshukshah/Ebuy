@@ -15,6 +15,11 @@ export const StateReducer = (state, action) => {
         ...state,
         itemsInCart: [...action.payload.cartItems],
       };
+    case "REMOVE_FROM_CART":
+      return {
+        ...state,
+        itemsInCart: [...action.payload.cartItems],
+      };
     case "TOGGLE_CART_DROPDOWN":
       return {
         ...state,

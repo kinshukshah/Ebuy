@@ -56,12 +56,14 @@ export const getUserCartDetails = async (dispatch) => {
   try {
     if (userId) {
       let { data } = await axios.get(`${BASE_API_URL}/cart/${userId}`);
-      data.success &&
+      if (data.success && data.cartList != null) {
         dispatch({
           type: "INITIALIZE_CART",
           payload: { cartItems: data.cartList.cartItems },
         });
-      console.log(data.cartList.cartItems);
+      } else {
+        return;
+      }
     }
   } catch (error) {
     alert("Could not fetch user cart list");
@@ -73,6 +75,7 @@ export const updateCart = async (dispatch, productId, userId, action) => {
     let { data } = await axios.post(
       `${BASE_API_URL}/cart/${userId}/${productId}?action=${action}`
     );
+    console.log(data);
     data.success &&
       dispatch({
         type: "ADD_TO_CART",
@@ -80,5 +83,20 @@ export const updateCart = async (dispatch, productId, userId, action) => {
       });
   } catch (error) {
     alert("Could not update user cart list");
+  }
+};
+
+export const removeCartItem = async (dispatch, productId, userId) => {
+  try {
+    let { data } = await axios.delete(
+      `${BASE_API_URL}/cart/${userId}/${productId}`
+    );
+    data.success &&
+      dispatch({
+        type: "REMOVE_FROM_CART",
+        payload: { cartItems: data.cart.cartItems },
+      });
+  } catch (error) {
+    alert("Could not remove the cart item");
   }
 };

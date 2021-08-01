@@ -54,7 +54,7 @@ function App() {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<SignUp />} />
         <Route exact path="/products" element={<Products />} />
-        <PrivateRoute path="/checkout" element={<CheckoutPage />} />
+        <PrivateRoute path="/checkout/cart" element={<CheckoutPage />} />
         <Route exact path="/*" element={<PageNotFound />} />
       </Routes>
       <Footer />
