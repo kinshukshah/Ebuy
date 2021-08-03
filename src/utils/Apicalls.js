@@ -100,3 +100,24 @@ export const removeCartItem = async (dispatch, productId, userId) => {
     alert("Could not remove the cart item");
   }
 };
+
+export const getUserWishlistDetails = async (dispatch) => {
+  let userId = localStorage?.getItem("currentUser")
+    ? JSON.parse(localStorage?.getItem("currentUser")).user._id
+    : null;
+  try {
+    if (userId) {
+      let { data } = await axios.get(`${BASE_API_URL}/wishlist/${userId}`);
+      if (data.success && data.wishlist != null) {
+        dispatch({
+          type: "INITIALIZE_WISHLIST",
+          payload: { wishlistItems: data.wishlist.wishlistItems },
+        });
+      } else {
+        return;
+      }
+    }
+  } catch (error) {
+    alert("Could not fetch user wishlist");
+  }
+};

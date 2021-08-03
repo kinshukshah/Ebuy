@@ -1,5 +1,6 @@
 export const INITIAL_STATE = {
   itemsInCart: [],
+  itemsInWishlist: [],
   hidden: true,
 };
 
@@ -20,12 +21,16 @@ export const StateReducer = (state, action) => {
         ...state,
         itemsInCart: [...action.payload.cartItems],
       };
+    case "INITIALIZE_WISHLIST":
+      return {
+        ...state,
+        itemsInWishlist: [...action.payload.wishlistItems],
+      };
     case "TOGGLE_CART_DROPDOWN":
       return {
         ...state,
         hidden: action.payload,
       };
-
     default:
       break;
   }

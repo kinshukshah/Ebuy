@@ -14,10 +14,15 @@ import { useLoading } from "./hooks/useLoading";
 import SignUp from "./Pages/signup/signup.component";
 import { useEffect } from "react";
 import { useProducts } from "./context/ProductContext";
-import { getProducts, getUserCartDetails } from "./utils/Apicalls";
+import {
+  getProducts,
+  getUserCartDetails,
+  getUserWishlistDetails,
+} from "./utils/Apicalls";
 import Products from "./Pages/ProductsPage/products.component";
 import { useUserState } from "./context/StateContext";
 import PageNotFound from "./Pages/PageNotFound/PageNotFound.component";
+import { Wishlist } from "./Pages/Wishlist/wishlist.component";
 function App() {
   const { setProducts } = useProducts();
   const {
@@ -39,6 +44,7 @@ function App() {
       (async function () {
         startLoading();
         await getUserCartDetails(userStatedispatch);
+        await getUserWishlistDetails(userStatedispatch);
         stopLoading();
       })();
     }
@@ -54,6 +60,7 @@ function App() {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<SignUp />} />
         <Route exact path="/products" element={<Products />} />
+        <Route exact path="/wishlist" element={<Wishlist />} />
         <PrivateRoute path="/checkout/cart" element={<CheckoutPage />} />
         <Route exact path="/*" element={<PageNotFound />} />
       </Routes>
