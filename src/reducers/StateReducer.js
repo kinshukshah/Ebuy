@@ -26,6 +26,11 @@ export const StateReducer = (state, action) => {
         ...state,
         itemsInWishlist: [...action.payload.wishlistItems],
       };
+    case "ADD_TO_WISHLIST":
+      return {
+        ...state,
+        itemsInWishlist: [...action.payload.wishlistItems],
+      };
     case "TOGGLE_CART_DROPDOWN":
       return {
         ...state,

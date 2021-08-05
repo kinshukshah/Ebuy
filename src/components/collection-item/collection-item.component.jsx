@@ -4,6 +4,7 @@ import "./collection-item.style.css";
 import { Link } from "react-router-dom";
 import { useProducts } from "../../context/ProductContext";
 import { GetItemsByTags } from "../Utils/index";
+import { useUserState } from "../../context/StateContext";
 const CollectionItem = ({ routeName, title, category }) => {
   const { products } = useProducts();
   let spliceValue = 4;
@@ -12,6 +13,9 @@ const CollectionItem = ({ routeName, title, category }) => {
     value: category,
   };
   const productsByCategory = products ? GetItemsByTags(tag, products) : null;
+  const {
+    userState: { itemsInWishlist },
+  } = useUserState();
   return (
     <div className="collection">
       <div className="collection-header">
@@ -27,9 +31,18 @@ const CollectionItem = ({ routeName, title, category }) => {
       </div>
       <div className="collection-row">
         {productsByCategory
-          ? productsByCategory
-              .slice(0, spliceValue)
-              .map((ele) => <MenuItem key={ele._id} element={ele} />)
+          ? productsByCategory.slice(0, spliceValue).map((item) => {
+              const itemInWishlistExists = itemsInWishlist.find(
+                (ele) => ele.productId._id === item._id
+              );
+              return (
+                <MenuItem
+                  key={item._id}
+                  element={item}
+                  wishlistExists={itemInWishlistExists ? true : false}
+                />
+              );
+            })
           : null}
       </div>
     </div>

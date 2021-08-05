@@ -1,6 +1,15 @@
-.products-row {
+.products-page {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+  padding: 1rem;
+  /* background-color: #F3F4F6; */
+}
+.products-filter {
+  width: 25%;
+}
+
+.products-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 0.8rem;
+  width: 75%;
 }

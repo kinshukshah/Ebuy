@@ -121,3 +121,26 @@ export const getUserWishlistDetails = async (dispatch) => {
     alert("Could not fetch user wishlist");
   }
 };
+
+export const AddToWishlist = async (dispatch, productId) => {
+  let userId = localStorage?.getItem("currentUser")
+    ? JSON.parse(localStorage?.getItem("currentUser")).user._id
+    : null;
+  try {
+    if (userId) {
+      let { data } = await axios.post(
+        `${BASE_API_URL}/wishlist/${userId}/${productId}`
+      );
+      if (data.success && data.wishlist != null) {
+        dispatch({
+          type: "ADD_TO_WISHLIST",
+          payload: { wishlistItems: data.wishlist.wishlistItems },
+        });
+      } else {
+        return;
+      }
+    }
+  } catch (error) {
+    alert("Could not fetch user wishlist");
+  }
+};

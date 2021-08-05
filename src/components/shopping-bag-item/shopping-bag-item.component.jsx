@@ -1,5 +1,9 @@
 import React from "react";
-import { removeCartItem, updateCart } from "../../utils/Apicalls";
+import {
+  AddToWishlist,
+  removeCartItem,
+  updateCart,
+} from "../../utils/Apicalls";
 import "./shopping-bag-item.styles.css";
 
 const ShoppingBagItem = ({
@@ -16,6 +20,13 @@ const ShoppingBagItem = ({
   const userId = JSON.parse(localStorage?.getItem("currentUser")).user._id;
   const handleRemoveFromCart = async () => {
     startLoading();
+    await removeCartItem(userStatedispatch, productId, userId);
+    stopLoading();
+  };
+
+  const handleMoveToWishlist = async () => {
+    startLoading();
+    await AddToWishlist(userStatedispatch, productId);
     await removeCartItem(userStatedispatch, productId, userId);
     stopLoading();
   };
@@ -56,7 +67,9 @@ const ShoppingBagItem = ({
           </button>
         </div>
         <div>
-          <button className="move-to-wishlist">Move to Wishlist</button>
+          <button className="move-to-wishlist" onClick={handleMoveToWishlist}>
+            Move to Wishlist
+          </button>
         </div>
       </div>
     </div>

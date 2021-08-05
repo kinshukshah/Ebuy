@@ -1,0 +1,14 @@
+.custom-btn {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #ff523b;
+  border: 1px solid #ff523b;
+}
+.custom-btn:hover {
+  background-color: #ff523b;
+  color: #fff;
+  opacity: 0.8;
+}

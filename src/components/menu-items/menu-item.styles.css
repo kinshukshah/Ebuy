@@ -1,10 +1,9 @@
 .col-4 {
-  flex-basis: 25%;
-  min-width: 200px;
+  width: 220px;
   margin-bottom: 50px;
-  padding: 10px;
+  padding: 10px 10px 5px 10px;
   transition: transform 0.5s;
-  height: 350px;
+  height: 420px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -15,7 +14,7 @@
 }
 .col-4 img {
   width: 100%;
-  height: 95%;
+  height: 75%;
 }
 .col-4 h4 {
   color: #555;
@@ -28,20 +27,46 @@
   color: #ff523b;
 }
 .addtocart {
-  position: absolute;
-  bottom: 60px;
-  /* padding: 10px 50px; */
-  width: 85%;
+  width: 100%;
   height: 35px;
-  margin: auto;
-  opacity: 0.5;
-  border: none;
-  background: white;
-}
-.addtocart:hover {
-  opacity: 0.85;
 }
 .menu-footer {
   align-self: flex-start;
-  height: 5%;
+  margin-bottom: 2px;
+}
+.wishlist-icon {
+  position: absolute;
+  top: 10;
+  right: 0;
+  margin-right: 20px;
+  margin-top: 6px;
+  border: none;
+  background: white;
+  border-radius: 50%;
+  padding: 5px;
+  opacity: 0.5;
+}
+.wishlist-icon i {
+  color: #ff523b;
+  font-size: 1.5rem;
+  text-align: center;
+}
+.menu-item {
+  background-color: white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.product-brand {
+  font-size: 16px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.product-product {
+  font-size: 14px;
+  text-overflow: ellipsis;
+  color: #535766;
+  overflow: hidden;
+}
+.product-price {
+  font-weight: 500;
+  font-size: 14px;
 }
