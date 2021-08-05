@@ -1,4 +1,5 @@
 import React from "react";
+import MenuItem from "../../components/menu-items/menu-item.component";
 import { useUserState } from "../../context/StateContext";
 import "./wishlist.styles.css";
 const Wishlist = () => {
@@ -7,11 +8,18 @@ const Wishlist = () => {
     userStatedispatch,
   } = useUserState();
   return (
-    <div>
-      {itemsInWishlist.length > 0 &&
-        itemsInWishlist.map((item) => (
-          <div key={item._id}>{item.productId.name}</div>
-        ))}
+    <div className="wishlist-page small-container">
+      <div className="wishlist-headers">Wishlist Page</div>
+      <div className="wishlist-items">
+        {itemsInWishlist.length > 0 &&
+          itemsInWishlist.map((item) => (
+            <MenuItem
+              key={item._id}
+              element={item.productId}
+              wishlistPage={true}
+            />
+          ))}
+      </div>
     </div>
   );
 };

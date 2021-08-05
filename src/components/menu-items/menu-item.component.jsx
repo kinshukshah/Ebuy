@@ -7,10 +7,14 @@ import { AddToCartUtils } from "../Utils/functions.utils";
 import { CartContext } from "../Context/Cart.Context";
 import { useAuth } from "../../context/AuthContext";
 import { useUserState } from "../../context/StateContext";
-import { AddToWishlist, updateCart } from "../../utils/Apicalls";
+import {
+  AddToWishlist,
+  RemoveFromWishlist,
+  updateCart,
+} from "../../utils/Apicalls";
 import { useLoading } from "../../hooks/useLoading";
 import { CustomButton } from "../button-component/button-component";
-const MenuItem = ({ element, wishlistExists }) => {
+const MenuItem = ({ element, wishlistExists, wishlistPage }) => {
   const { _id, name, imageUrl, price, brandName } = element;
   const {
     user: {
@@ -29,43 +33,61 @@ const MenuItem = ({ element, wishlistExists }) => {
     await AddToWishlist(userStatedispatch, element._id);
     stopLoading();
   };
+  const handleRemoveFromWishlist = async () => {
+    startLoading();
+    await RemoveFromWishlist(userStatedispatch, element._id);
+    stopLoading();
+  };
+  const MoveToBag = async () => {
+    startLoading();
+    await updateCart(userStatedispatch, element._id, userId, "increase");
+    await RemoveFromWishlist(userStatedispatch, element._id);
+    stopLoading();
+  };
   return (
     <div className="col-4 menu-item">
       <img src={imageUrl} alt=""></img>
       <div className="menu-footer">
         <h3 className="product-brand">{brandName}</h3>
-        {/* <div className="rating">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="far fa-star"></i>
-        </div> */}
         <h4 className="product-product">{name}</h4>
         <span className="product-price">${price}</span>
       </div>
       <div className="addtocart">
-        <CustomButton
-          label={loading ? "Adding..." : "Add to cart"}
-          disabled={loading ? true : false}
-          onClick={() => AddToCart()}
-        />
+        {wishlistPage ? (
+          <CustomButton
+            label={loading ? "MOVING..." : "MOVE TO BAG"}
+            disabled={loading ? true : false}
+            onClick={() => MoveToBag()}
+          />
+        ) : (
+          <CustomButton
+            label={loading ? "ADDING..." : "ADD TO CART"}
+            disabled={loading ? true : false}
+            onClick={() => AddToCart()}
+          />
+        )}
       </div>
-      {wishlistExists ? (
-        <button
-          disabled={loading ? true : false}
-          className="wishlist-icon"
-          onClick={handleAddToWishlist}
-        >
-          <i class="fas fa-heart"></i>
-        </button>
+      {!wishlistPage ? (
+        wishlistExists ? (
+          <button className="wishlist-icon">
+            <i class="fas fa-heart"></i>
+          </button>
+        ) : (
+          <button
+            disabled={loading ? true : false}
+            className="wishlist-icon"
+            onClick={handleAddToWishlist}
+          >
+            <i class="far fa-heart"></i>
+          </button>
+        )
       ) : (
         <button
           disabled={loading ? true : false}
-          className="wishlist-icon"
-          onClick={handleAddToWishlist}
+          className="wishlist-icon remove-btn"
+          onClick={handleRemoveFromWishlist}
         >
-          <i class="far fa-heart"></i>
+          <i class="fas fa-times"></i>
         </button>
       )}
     </div>

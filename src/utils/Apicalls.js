@@ -144,3 +144,27 @@ export const AddToWishlist = async (dispatch, productId) => {
     alert("Could not fetch user wishlist");
   }
 };
+
+export const RemoveFromWishlist = async (dispatch, productId) => {
+  let userId = localStorage?.getItem("currentUser")
+    ? JSON.parse(localStorage?.getItem("currentUser")).user._id
+    : null;
+  try {
+    if (userId) {
+      let { data } = await axios.delete(
+        `${BASE_API_URL}/wishlist/${userId}/${productId}`
+      );
+      console.log(data);
+      if (data.success) {
+        dispatch({
+          type: "UPDATE_WISHLIST",
+          payload: { wishlistItems: data.wishlist.wishlistItems },
+        });
+      } else {
+        return;
+      }
+    }
+  } catch (error) {
+    alert("Could not remove item from wishlist");
+  }
+};

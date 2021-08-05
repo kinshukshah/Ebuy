@@ -1,0 +1,12 @@
+.wishlist-page {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.wishlist-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.wishlist-headers {
+  margin-bottom: 1rem;
+}
