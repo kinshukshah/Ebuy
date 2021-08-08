@@ -28,3 +28,57 @@ export const GetTotalPrice = (CartItems) => {
     return 0;
   }
 };
+
+export const GetAllBrands = (productList) => {
+  const BrandArr = [];
+  productList.map((product) => {
+    const BrandExists = BrandArr.find(
+      (ele) => ele.brandName === product.brandName
+    );
+    if (!BrandExists) {
+      BrandArr.push({
+        category: product.category,
+        brandName: product.brandName,
+      });
+    }
+  });
+  return BrandArr;
+};
+
+const FilterByCategory = (filterList, productList) => {
+  if (filterList.categoryFilter.length > 0) {
+    return productList.filter((product) =>
+      filterList.categoryFilter.includes(product.category) ? true : false
+    );
+  } else {
+    return productList;
+  }
+};
+
+const FilterByBrands = (filterList, productList) => {
+  if (filterList.brandsFilter.length > 0) {
+    return productList.filter((product) =>
+      filterList.brandsFilter.includes(product.brandName) ? true : false
+    );
+  } else {
+    return productList;
+  }
+};
+
+const FilterBySort = (sortType, productList) => {
+  if (sortType === "lowtohigh") {
+    return productList.sort((a, b) => a.price - b.price);
+  }
+  if (sortType === "hightolow") {
+    return productList.sort((a, b) => b.price - a.price);
+  }
+  return productList;
+};
+
+export const GetFilteredData = (filterList, productList) => {
+  const products = [...productList];
+  const sortedList = FilterBySort(filterList.sort, products);
+  const ProductsByCategory = FilterByCategory(filterList, sortedList);
+  const ProductsByBrands = FilterByBrands(filterList, ProductsByCategory);
+  return ProductsByBrands;
+};

@@ -32,7 +32,8 @@ const Navbar = () => {
           </li>
         </ul>
       </nav>
-      <CartIcon />
+
+        <CartIcon />
     </div>
   );
 };

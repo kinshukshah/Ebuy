@@ -1,10 +1,13 @@
 .products-page {
   display: flex;
-  padding: 1rem;
+  padding: 2rem;
+  justify-content: space-between;
   /* background-color: #F3F4F6; */
 }
 .products-filter {
-  width: 25%;
+  width: 22%;
+  height: fit-content;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .products-row {

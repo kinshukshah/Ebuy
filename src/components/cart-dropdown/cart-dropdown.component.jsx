@@ -2,6 +2,7 @@ import React from "react";
 import "./cart-dropdown.styles.css";
 import CartItem from "../cart-item/cart-item.component";
 import { useUserState } from "../../context/StateContext";
+import { CustomButton } from "../button-component/button-component";
 const CartDropdown = () => {
   const {
     userState: { itemsInCart: CartItems },
@@ -30,8 +31,9 @@ const CartDropdown = () => {
           </span>
         )}
       </div>
-
-      <button className="checkout-btn">Go To Checkout</button>
+      <div className="checkout-btn">
+        <CustomButton label="CHECKOUT" />
+      </div>
     </div>
   );
 };
