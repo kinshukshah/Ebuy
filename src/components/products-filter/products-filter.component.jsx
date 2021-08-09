@@ -6,19 +6,7 @@ const ProductsFilter = ({ filterList, setFilterList, BrandsList }) => {
   return (
     <div>
       Products Filter
-      <div>
-        Sort By
-        <select
-          onChange={(e) =>
-            setFilterList({ type: "UPDATE_SORT_LIST", payload: e.target.value })
-          }
-          value={filterList.sort}
-        >
-          <option value="relevance">Relevance</option>
-          <option value="lowtohigh">Low to High</option>
-          <option value="hightolow">High to low</option>
-        </select>
-      </div>
+      
       <div>
         <ul>
           {CategoryData.map((item) => (

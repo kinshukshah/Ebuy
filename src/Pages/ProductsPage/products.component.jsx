@@ -19,28 +19,42 @@ function Products() {
   const BrandsList = products && GetAllBrands(products);
   return (
     <div className="products-page">
-      <div className="products-filter">
-        <ProductsFilter
-          filterList={filterList}
-          setFilterList={setFilterList}
-          BrandsList={BrandsList}
-        />
+      <div className="products-sort">
+        <select
+          onChange={(e) =>
+            setFilterList({ type: "UPDATE_SORT_LIST", payload: e.target.value })
+          }
+          value={filterList.sort}
+        >
+          <option value="relevance">Relevance</option>
+          <option value="lowtohigh">Low to High</option>
+          <option value="hightolow">High to low</option>
+        </select>
       </div>
-      <div className="products-row">
-        {products
-          ? filteredData.map((item) => {
-              const itemInWishlistExists = itemsInWishlist.find(
-                (ele) => ele.productId._id === item._id
-              );
-              return (
-                <MenuItem
-                  key={item._id}
-                  element={item}
-                  wishlistExists={itemInWishlistExists ? true : false}
-                />
-              );
-            })
-          : null}
+      <div className="products-page-conatiner">
+        <div className="products-filter">
+          <ProductsFilter
+            filterList={filterList}
+            setFilterList={setFilterList}
+            BrandsList={BrandsList}
+          />
+        </div>
+        <div className="products-row">
+          {products
+            ? filteredData.map((item) => {
+                const itemInWishlistExists = itemsInWishlist.find(
+                  (ele) => ele.productId._id === item._id
+                );
+                return (
+                  <MenuItem
+                    key={item._id}
+                    element={item}
+                    wishlistExists={itemInWishlistExists ? true : false}
+                  />
+                );
+              })
+            : null}
+        </div>
       </div>
     </div>
   );
