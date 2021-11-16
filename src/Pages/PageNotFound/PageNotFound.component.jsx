@@ -2,6 +2,7 @@ import React from "react";
 import PageNotFoundImage from "../../assets/PageNotFound.svg";
 import { Link } from "react-router-dom";
 import "./PageNotFound.styles.css";
+import { CustomButton } from "../../components/button-component/button-component";
 function PageNotFound() {
   return (
     <div className="pagenotfound">
@@ -12,7 +13,7 @@ function PageNotFound() {
         <h2>Sorry :(</h2>
         <span>The requested page does not exist</span>
         <Link to="/">
-          <button> Back to Home page</button>
+          <CustomButton label="Back to HomePage" inverse />
         </Link>
       </div>
     </div>

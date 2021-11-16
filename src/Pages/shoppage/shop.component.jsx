@@ -8,7 +8,7 @@ const ShopPage = () => {
       {CategoryData.map((ele) => (
         <CollectionItem
           key={ele.category}
-          routeName=""
+          routeName={ele.routeName}
           title={ele.category}
           category={ele.category}
         />

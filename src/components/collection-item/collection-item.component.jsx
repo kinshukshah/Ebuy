@@ -16,6 +16,7 @@ const CollectionItem = ({ routeName, title, category }) => {
   const {
     userState: { itemsInWishlist },
   } = useUserState();
+  console.log({routeName});
   return (
     <div className="collection">
       <div className="collection-header">
@@ -25,7 +26,7 @@ const CollectionItem = ({ routeName, title, category }) => {
             <button>View All</button>
           </Link>
         ) : null} */}
-        <Link to={`/products`}>
+        <Link to={routeName}>
           <button>View All</button>
         </Link>
       </div>

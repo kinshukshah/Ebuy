@@ -1,0 +1,31 @@
+.one-category {
+  margin-bottom: 1rem;
+}
+li {
+  list-style: none;
+}
+
+.checkbox input,
+.checkbox label {
+  margin-left: 0;
+  font-size: 0.8rem;
+}
+.checkbox input {
+  cursor: pointer;
+  margin: 0 10px;
+}
+.list-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.7px;
+  padding: 0;
+  margin: 15px 0;
+}
+label {
+  cursor: default;
+}
+.checkbox label {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}

@@ -1,0 +1,10 @@
+.box {
+  width: fit-content;
+  min-width: 300px;
+  box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 5rem auto;
+  height: fit-content;
+  min-height: 200px;
+  padding: 40px 20px;
+}

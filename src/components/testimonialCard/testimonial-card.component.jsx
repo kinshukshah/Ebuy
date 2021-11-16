@@ -7,11 +7,11 @@ const CardTestimonial = ({ name, imageUrl, rating, review }) => {
       <i className="fa fa-quote-left"></i>
       <p>{review}</p>
       <div className="rating">
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="far fa-star"></i>
+        <i className="fas fa-star"></i>
+        <i className="fas fa-star"></i>
+        <i className="fas fa-star"></i>
+        <i className="fas fa-star"></i>
+        <i className="far fa-star"></i>
       </div>
       <img src={imageUrl} alt=""></img>
       <h3>{name}</h3>

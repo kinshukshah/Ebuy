@@ -21,7 +21,7 @@
   text-align: center;
   position: relative;
   margin: 0 auto 80px;
-  line-height: 60px;
+  line-height: 3rem;
   color: #555;
 }
 .feature-title::after {
@@ -45,3 +45,10 @@
 .rating i {
     color:#ff523b;
 } */
+
+@media (max-width: 450px) {
+  .featuredrow,.feature-title{
+    /* flex-direction: column; */
+    display: none;
+  }
+}

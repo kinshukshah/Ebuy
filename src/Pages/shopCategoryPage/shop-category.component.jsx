@@ -22,7 +22,9 @@ const ShopCategory = () => {
           title={categoryProducts.title}
           items={categoryProducts.items}
         />
-      ) : "No Products Available"}
+      ) : (
+        "No Products Available"
+      )}
     </div>
   );
 };

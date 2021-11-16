@@ -2,7 +2,7 @@
 import React, { useState, useContext } from "react";
 import "./menu-item.styles.css";
 import ProdImage5 from "../../assets/product-5.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AddToCartUtils } from "../Utils/functions.utils";
 import { CartContext } from "../Context/Cart.Context";
 import { useAuth } from "../../context/AuthContext";
@@ -16,37 +16,60 @@ import { useLoading } from "../../hooks/useLoading";
 import { CustomButton } from "../button-component/button-component";
 const MenuItem = ({ element, wishlistExists, wishlistPage }) => {
   const { _id, name, imageUrl, price, brandName } = element;
+  const navigate = useNavigate();
+  // const {
+  //   user: {
+  //     user: { _id: userId },
+  //   },
+  // } = useAuth();
   const {
-    user: {
-      user: { _id: userId },
-    },
+    user: { user, isLogin },
   } = useAuth();
   const { userStatedispatch } = useUserState();
   const [loading, stopLoading, startLoading] = useLoading();
   const AddToCart = async () => {
-    startLoading();
-    await updateCart(userStatedispatch, element._id, userId, "increase");
-    stopLoading();
+    console.log({ isLogin });
+    if (isLogin) {
+      startLoading();
+      await updateCart(userStatedispatch, element._id, user._id, "increase");
+      stopLoading();
+    } else {
+      navigate("/login");
+    }
   };
   const handleAddToWishlist = async () => {
-    startLoading();
-    await AddToWishlist(userStatedispatch, element._id);
-    stopLoading();
+    if (isLogin) {
+      startLoading();
+      await AddToWishlist(userStatedispatch, element._id);
+      stopLoading();
+    } else {
+      navigate("/login", { state: { from: "/products" } });
+    }
   };
   const handleRemoveFromWishlist = async () => {
-    startLoading();
-    await RemoveFromWishlist(userStatedispatch, element._id);
-    stopLoading();
+    if (isLogin) {
+      startLoading();
+      await RemoveFromWishlist(userStatedispatch, element._id);
+      stopLoading();
+    } else {
+      navigate("/login");
+    }
   };
   const MoveToBag = async () => {
-    startLoading();
-    await updateCart(userStatedispatch, element._id, userId, "increase");
-    await RemoveFromWishlist(userStatedispatch, element._id);
-    stopLoading();
+    if (isLogin) {
+      startLoading();
+      await updateCart(userStatedispatch, element._id, user._id, "increase");
+      await RemoveFromWishlist(userStatedispatch, element._id);
+      stopLoading();
+    } else {
+      navigate("/login");
+    }
   };
   return (
     <div className="col-4 menu-item">
-      <img src={imageUrl} alt=""></img>
+      <div className="img-card">
+        <img src={imageUrl} alt=""></img>
+      </div>
       <div className="menu-footer">
         <h3 className="product-brand">{brandName}</h3>
         <h4 className="product-product">{name}</h4>
@@ -70,7 +93,7 @@ const MenuItem = ({ element, wishlistExists, wishlistPage }) => {
       {!wishlistPage ? (
         wishlistExists ? (
           <button className="wishlist-icon">
-            <i class="fas fa-heart"></i>
+            <i className="fas fa-heart"></i>
           </button>
         ) : (
           <button
@@ -78,7 +101,7 @@ const MenuItem = ({ element, wishlistExists, wishlistPage }) => {
             className="wishlist-icon"
             onClick={handleAddToWishlist}
           >
-            <i class="far fa-heart"></i>
+            <i className="far fa-heart"></i>
           </button>
         )
       ) : (

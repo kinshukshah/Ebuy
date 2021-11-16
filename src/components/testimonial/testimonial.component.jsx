@@ -30,8 +30,8 @@ const Testimonial = () => {
     <div className="testimonial">
       <div className="small-container">
         <div className="testimonial-row">
-          {testimonial_data.map((item) => (
-            <CardTestimonial {...item}></CardTestimonial>
+          {testimonial_data.map((item, idx) => (
+            <CardTestimonial {...item} key={idx}></CardTestimonial>
           ))}
         </div>
       </div>

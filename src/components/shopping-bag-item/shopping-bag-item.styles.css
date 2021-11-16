@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   height: 85%;
-  margin-bottom: 12px;
+  margin-bottom: 0.7rem;
 }
 .shopping-bag-container {
   display: flex;
@@ -10,7 +10,7 @@
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   padding: 12px 20px 12px 12px;
   height: 220px;
-  width: 500px;
+  width: 70%;
   margin: 1rem;
   background-color: white;
   border-radius: 5px;
@@ -47,7 +47,20 @@ bag-item-price {
   padding: 0;
   color: #696b79;
   text-transform: uppercase;
-  font-size: 13px !important;
+  font-size: 0.8rem !important;
   font-weight: 600;
   letter-spacing: 0.5px;
+}
+
+@media (max-width: 425px) {
+  .shopping-bag-container {
+    width: 100%;
+    margin: 0 0 0.5rem 0;
+  }
+}
+@media (min-width: 425px) and (max-width: 768px) {
+  .shopping-bag-container {
+    width: 100%;
+    margin: 0 0 0.5rem 0;
+  }
 }

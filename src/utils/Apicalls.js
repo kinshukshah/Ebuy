@@ -3,9 +3,12 @@ import axios from "axios";
 const BASE_API_URL = "https://shopify-backend.kinshukshah.repl.co/api";
 
 export const loginUser = async (dispatch, loginPayload) => {
+  console.log("abc");
   try {
     dispatch({ type: "REQUEST_LOGIN" });
-    let { data } = await axios.post(`${BASE_API_URL}/user/login`, loginPayload);
+    let res = await axios.post(`${BASE_API_URL}/user/login`, loginPayload);
+    console.log({ logindata: res });
+    const data = res.data;
     if (data.success) {
       dispatch({ type: "LOGIN_SUCCESS", payload: data });
       localStorage?.setItem(
@@ -17,6 +20,7 @@ export const loginUser = async (dispatch, loginPayload) => {
     dispatch({ type: "LOGIN_ERROR", error: data.error });
     return;
   } catch (error) {
+    console.log("err", error);
     dispatch({ type: "LOGIN_ERROR", error: error.message });
   }
 };

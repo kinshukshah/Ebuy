@@ -4,7 +4,8 @@ import "./signup.styles.css";
 import { loginUser, signup } from "../../utils/Apicalls";
 import { useAuth } from "../../context/AuthContext";
 import { useLoading } from "../../hooks/useLoading";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { CustomButton } from "../../components/button-component/button-component";
 function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -34,38 +35,36 @@ function SignUp() {
   };
 
   return (
-    <div className="signup-box">
-      <div>
-        <h3>Sign up</h3>
-      </div>
-      <form className="form-box" onSubmit={handleSubmit}>
+    <div className="login-box">
+      <div className="login-head">REGISTER</div>
+      <div className="login-subhead">Please fill in the information below.</div>
+      <form className="login-form-box" onSubmit={handleSubmit}>
         <FormInput
-          label="Name"
-          placeholder="Enter your name"
+          placeholder="Name"
           onChange={(e) => setName(e.target.value)}
           value={name}
         />
         <FormInput
-          label="Email"
-          placeholder="you@yourcompany.com"
+          placeholder="Email"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         />
         <FormInput
-          label="Password"
           type="password"
-          placeholder="Your password"
+          placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
         <FormInput
-          label="Confirm Password"
-          placeholder="Enter the same password"
+          placeholder="Confirm Password"
           onChange={(e) => setConfPass(e.target.value)}
           value={confPass}
         />
-        <button type="submit">Sign up</button>
+        <CustomButton type="submit" label="SIGN UP" inverse />
       </form>
+      <div className="sub-text">
+        <Link to="/login"> Already have an account? Log In</Link>
+      </div>
       {error ? error : null}
       {loading}
     </div>

@@ -9,4 +9,22 @@
 }
 .wishlist-headers {
   margin-bottom: 1rem;
+  letter-spacing: 1.5px;
+  font-size: 1rem;
+  color: black;
+  font-weight: 400;
+}
+.empty-wishlist {
+  margin: 30vh auto;
+}
+
+@media (max-width: 425px) {
+  .wishlist-items {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 425px) and (max-width: 768px) {
+  .wishlist-items {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }

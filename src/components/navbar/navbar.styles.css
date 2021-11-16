@@ -2,13 +2,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 20px 0;
   position: sticky;
   top: 0;
   z-index: 1000;
   border-bottom: 1px solid #eee;
   box-shadow: 0 0 4px rgb(0 0 0 / 40%);
   background-color: white;
+  width: 100%;
+  margin: auto;
 }
 .navbar nav ul {
   display: flex;
@@ -21,11 +23,59 @@ a {
   text-decoration: none;
   color: #555;
 }
-.logo img {
-  width: 150px;
-}
 .logo h3 {
   color: tomato;
   font-size: 1.5rem;
   font-family: "Dela Gothic One";
 }
+.menu-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.menu-icon i {
+  margin-left: 0.5rem;
+  font-size: 1.5rem;
+  display: none;
+  color: gray;
+}
+
+@media (max-width: 768px) {
+  /* .navbar nav ul{
+    display: none;
+  } */
+  .menu-icon i {
+    display: block;
+  }
+  .navbar nav {
+    position: absolute;
+  }
+
+  .navbar nav ul {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .navbar nav ul li {
+    text-align: center;
+    padding: 0.5rem 1rem;
+  }
+  .middle-action-items {
+    width: 100%;
+    margin-top: 270px;
+    z-index: 1000;
+    background-color: white;
+    position: absolute;
+    display: none;
+    border-bottom: 2px solid #eee;
+  }
+  .active-middle-menu {
+    display: block;
+  }
+}
+/* @media (min-width: 425px) and (max-width: 768px) {
+  .wishlist-items {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+} */

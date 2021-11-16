@@ -2,10 +2,9 @@ import "./App.css";
 import Navbar from "./components/navbar/navbar.component";
 import Homepage from "./Pages/homepage/homepage.component";
 
-import { Routes, Route, Link, Router } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import ShopPage from "./Pages/shoppage/shop.component";
 import Footer from "./components/footer/footer.component";
-import ShopCategory from "./Pages/shopCategoryPage/shop-category.component";
 import CheckoutPage from "./Pages/checkout/checkout.component";
 import { useAuth } from "./context/AuthContext";
 import PrivateRoute from "./PrivateRoute/private-route";
@@ -23,6 +22,7 @@ import Products from "./Pages/ProductsPage/products.component";
 import { useUserState } from "./context/StateContext";
 import PageNotFound from "./Pages/PageNotFound/PageNotFound.component";
 import { Wishlist } from "./Pages/Wishlist/wishlist.component";
+import { AccountPage } from "./Pages/Account/account.component";
 function App() {
   const { setProducts } = useProducts();
   const {
@@ -51,7 +51,7 @@ function App() {
   }, [isLogin]);
 
   return (
-    <div className="App">
+    <div className="App full-container">
       <Navbar />
       <Routes>
         <Route exact path="/" element={<Homepage />} />
@@ -59,8 +59,31 @@ function App() {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<SignUp />} />
         <Route exact path="/products" element={<Products />} />
-        <Route exact path="/wishlist" element={<Wishlist />} />
-        <PrivateRoute path="/checkout/cart" element={<CheckoutPage />} />
+        <Route
+          exact
+          path="/wishlist"
+          element={
+            <PrivateRoute path="/wishlist">
+              <Wishlist />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/checkout/cart"
+          element={
+            <PrivateRoute path="/checkout/cart">
+              <CheckoutPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/account"
+          element={
+            <PrivateRoute path="/account">
+              <AccountPage />
+            </PrivateRoute>
+          }
+        />
         <Route exact path="/*" element={<PageNotFound />} />
       </Routes>
       <Footer />

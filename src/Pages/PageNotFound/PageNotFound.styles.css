@@ -12,5 +12,17 @@
   width: 100%;
 }
 .pagenotfound-content {
-  width: 50%;
+  width: 30%;
+}
+@media (max-width: 425px) {
+  .pagenotfound {
+    flex-direction: column;
+  }
+  .pagenotfound-image {
+    width: 90%;
+  }
+  .pagenotfound-content {
+    margin-top: 2rem;
+    width: 90%;
+  }
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { CustomButton } from "../button-component/button-component";
 import "./order-summary.styles.css";
 const OrderSummary = ({ totalPrice, CartItems }) => {
   return (
@@ -17,11 +18,11 @@ const OrderSummary = ({ totalPrice, CartItems }) => {
       ))}
       <hr />
       <div className="total-amt">
-        <span style={{ fontWeight: "bold" }}>Total Amount: </span>
-        <span>${totalPrice}</span>
+        <span>Total Amount: </span>
+        <span style={{ fontWeight: "bold" }}> ${totalPrice}</span>
       </div>
       <div>
-        <button>Checkout</button>
+        <CustomButton label="Checkout" inverse />
       </div>
     </div>
   );

@@ -3,10 +3,12 @@ import "./cart-dropdown.styles.css";
 import CartItem from "../cart-item/cart-item.component";
 import { useUserState } from "../../context/StateContext";
 import { CustomButton } from "../button-component/button-component";
+import { useNavigate } from "react-router";
 const CartDropdown = () => {
   const {
     userState: { itemsInCart: CartItems },
   } = useUserState();
+  const navigate = useNavigate();
   return (
     <div className="cart-dropdown">
       <div className="cart-dropdown-order-summary">
@@ -32,7 +34,10 @@ const CartDropdown = () => {
         )}
       </div>
       <div className="checkout-btn">
-        <CustomButton label="CHECKOUT" />
+        <CustomButton
+          label="CHECKOUT"
+          onClick={() => navigate("/checkout/cart")}
+        />
       </div>
     </div>
   );

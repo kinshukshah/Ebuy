@@ -13,7 +13,7 @@ const BannerHeader = () => {
           quos atque eos, animi dolorem.
         </p>
         <a href="#" className="btn-explore">
-          Explore Now <i class="fas fa-chevron-right"></i>
+          Explore Now <i className="fas fa-chevron-right"></i>
         </a>
       </div>
       <div className="col-2">

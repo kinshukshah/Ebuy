@@ -11,7 +11,7 @@ const BannerOffer = () => {
             <img src={OfferImage} className="offer-img" alt=""></img>
           </div>
           <div className="col-2">
-            <p>Exclusively Available on Red Store</p>
+            <p>Exclusively Available on Ebuy!</p>
             <h1>Smart Band 4</h1>
             <small>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -21,7 +21,7 @@ const BannerOffer = () => {
             </small>
             <br></br>
             <a href="#" className="btn-explore">
-              Buy Now <i class="fas fa-chevron-right"></i>
+              Buy Now <i className="fas fa-chevron-right"></i>
             </a>
           </div>
         </div>
