@@ -3,11 +3,9 @@ import axios from "axios";
 const BASE_API_URL = "https://shopify-backend.kinshukshah.repl.co/api";
 
 export const loginUser = async (dispatch, loginPayload) => {
-  console.log("abc");
   try {
     dispatch({ type: "REQUEST_LOGIN" });
     let res = await axios.post(`${BASE_API_URL}/user/login`, loginPayload);
-    console.log({ logindata: res });
     const data = res.data;
     if (data.success) {
       dispatch({ type: "LOGIN_SUCCESS", payload: data });
@@ -18,10 +16,14 @@ export const loginUser = async (dispatch, loginPayload) => {
       return data;
     }
     dispatch({ type: "LOGIN_ERROR", error: data.error });
-    return;
+    alert("Error : " + data.error);
+    return data;
   } catch (error) {
-    console.log("err", error);
-    dispatch({ type: "LOGIN_ERROR", error: error.message });
+    const serverErr = error;
+    console.log({ serverErr: serverErr.response.data });
+    dispatch({ type: "LOGIN_ERROR", error: serverErr.response.data.error });
+    alert("Error : " + serverErr.response.data.error);
+    return serverErr.response.data;
   }
 };
 
