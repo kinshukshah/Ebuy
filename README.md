@@ -24,7 +24,7 @@ Backend source code (Express & Mongoose): [https://github.com/kinshukshah/shopif
 5. Product page for each product.
 6. Client Side Input Form Validation SignIn/SignUp.
 7. Full Page Modal for Products Filter.
-8. Fix Netlify Navigation Issue
+8. Fix Netlify Navigation Issue - Done
 9. Refactor Code.
 -----
 ### Tech Stack & Libraries used: 
